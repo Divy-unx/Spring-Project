@@ -1,4 +1,8 @@
 package com.springframework.vehicles;
 
-public interface Bus {
+public class Bus implements Vehicle {
+    public String getMileage(){
+        return "40Km/L";
+    }
 }
+
