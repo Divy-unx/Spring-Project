@@ -1,10 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:car.properties"/> <!-- load car.properties in config.xml -->
     <!-- bean definitions here -->
     <bean id="myVehicle" class = "com.springframework.vehicles.Car">
+        <!--<constructor-arg ref="myDiscountService"/>-->
+        <property name="discountService" ref="myDiscountService"/>
+        <property name="brandName" value="Honda"/>
+        <property name="maximumRetailPrice" value = "${car.mrp}"/>
+    </bean>
+
+    <bean id="myDiscountService" class = "com.springframework.vehicles.FestivalDiscountService">
 
     </bean>
 
